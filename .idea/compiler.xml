@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="webtest" />
+        <module name="itheima_ssm" />
         <module name="webtext" />
       </profile>
     </annotationProcessing>

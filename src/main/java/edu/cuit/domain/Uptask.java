@@ -5,6 +5,7 @@ import java.sql.Date;
 public class Uptask {
     private int aid;
     private int sid;
+    private int tid;
     private String title;
     private String article;
     private Date date;
@@ -13,6 +14,14 @@ public class Uptask {
     private String att;
     private String msg;
     private String grade;
+
+    public int getTid() {
+        return tid;
+    }
+
+    public void setTid(int tid) {
+        this.tid = tid;
+    }
 
     public int getAid() {
         return aid;
@@ -99,6 +108,7 @@ public class Uptask {
         return "Uptask{" +
                 "aid=" + aid +
                 ", sid=" + sid +
+                ", tid=" + tid +
                 ", title='" + title + '\'' +
                 ", article='" + article + '\'' +
                 ", date=" + date +

@@ -25,8 +25,8 @@ public interface StudentMapper {
     public void deleteBySnum(int snum);
     @Select("select * from student")
     public List<Student> findAll();
-    @Update("update student set sid=#{sid},sname=#{snum},ssex=#{ssex}," +
-            "sage=#{sage},cid=#{cid},sstatus=#{sstatus},phone=#{phone},address=#{address},email=#{email},pwd=#{pwd},pic=#{pic}")
+    @Update("update student set sname=#{snum},ssex=#{ssex}," +
+            "sage=#{sage},cid=#{cid},sstatus=#{sstatus},phone=#{phone},address=#{address},email=#{email},pwd=#{pwd},pic=#{pic} where sid=#{sid}")
     public  void update(Teacher teacher);
 
 }

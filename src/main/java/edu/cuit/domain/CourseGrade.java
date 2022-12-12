@@ -4,10 +4,11 @@ public class CourseGrade {
 //    课程id
     private Integer courseid;
 //    学生姓名
-    private String sname;
+    private Integer snum;
 //    学生成绩
     private Integer score;
 
+    private Integer cgid;
     public Integer getCourseid() {
         return courseid;
     }
@@ -16,12 +17,22 @@ public class CourseGrade {
         this.courseid = courseid;
     }
 
-    public String getSname() {
-        return sname;
+
+
+    public Integer getCgid() {
+        return cgid;
     }
 
-    public void setSname(String sname) {
-        this.sname = sname;
+    public void setCgid(Integer cgid) {
+        this.cgid = cgid;
+    }
+
+    public Integer getSnum() {
+        return snum;
+    }
+
+    public void setSnum(Integer snum) {
+        this.snum = snum;
     }
 
     public Integer getScore() {
@@ -37,19 +48,21 @@ public class CourseGrade {
 
     }
 
-    public CourseGrade(Integer courseid, String sname, Integer score) {
+    public CourseGrade(Integer courseid,Integer snum, Integer score,Integer cgid) {
         this.courseid = courseid;
-        this.sname = sname;
+        this.snum = snum;
         this.score = score;
+        this.cgid = cgid;
     }
 
 
     @Override
     public String toString() {
-        return "courseGrade{" +
+        return "CourseGrade{" +
                 "courseid=" + courseid +
-                ", sname='" + sname + '\'' +
+                ", snum=" + snum +
                 ", score=" + score +
+                ", cgid=" + cgid +
                 '}';
     }
 }

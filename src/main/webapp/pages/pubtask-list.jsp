@@ -59,15 +59,6 @@
 	href="${pageContext.request.contextPath}/plugins/ionslider/ion.rangeSlider.skinNice.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/plugins/bootstrap-slider/slider.css">
-
-	<script>
-		function delUser(userId) {
-			if(confirm("你确认要删除吗")){
-				location.href = "${pageContext.request.contextPath}/user/del/"+userId;
-			}
-
-		}
-	</script>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -75,11 +66,11 @@
 	<div class="wrapper">
 
 		<!-- 页面头部 -->
-		<jsp:include page="header.jsp"></jsp:include>
+		<jsp:include page="theader.jsp"></jsp:include>
 		<!-- 页面头部 /-->
 
 		<!-- 导航侧栏 -->
-		<jsp:include page="aside.jsp"></jsp:include>
+		<jsp:include page="taside.jsp"></jsp:include>
 		<!-- 导航侧栏 /-->
 
 		<!-- 内容区域 -->
@@ -88,15 +79,15 @@
 			<!-- 内容头部 -->
 			<section class="content-header">
 			<h1>
-				用户管理 <small>全部用户</small>
+				作业管理 <small>作业管理</small>
 			</h1>
 			<ol class="breadcrumb">
 				<li><a href="${pageContext.request.contextPath}/index.jsp"><i
 						class="fa fa-dashboard"></i> 首页</a></li>
 				<li><a
-					href="${pageContext.request.contextPath}/user/findAll.do">用户管理</a></li>
+					href="${pageContext.request.contextPath}/role/findAll.do">作业管理</a></li>
 
-				<li class="active">全部用户</li>
+				<li class="active">作业管理</li>
 			</ol>
 			</section>
 			<!-- 内容头部 /-->
@@ -117,7 +108,7 @@
 							<div class="pull-left">
 								<div class="form-group form-inline">
 									<div class="btn-group">
-										<button type="button" class="btn btn-default" title="新建" onclick="location.href='${pageContext.request.contextPath}/user/saveUI'">
+										<button type="button" class="btn btn-default" title="新建" onclick="location.href='${pageContext.request.contextPath}/pages/task-add.jsp'">
 											<i class="fa fa-file-o"></i> 新建
 										</button>
 										
@@ -145,35 +136,30 @@
 											id="selall" type="checkbox" class="icheckbox_square-blue">
 										</th>
 										<th class="sorting_asc">ID</th>
-										<th class="sorting_desc">用户名</th>
-										<th class="sorting_asc sorting_asc_disabled">邮箱</th>
-										<th class="sorting_desc sorting_desc_disabled">联系电话</th>
-										<th class="sorting">具有角色</th>
-										<th class="sorting">操作</th>
+										<th class="sorting_desc">教师ID</th>
+										<th class="sorting">课程ID</th>
+										<th class="sorting">课程名称</th>
+										<th class="sorting">班级ID</th>
+										<th class="sorting">标题</th>
+										<th class="sorting">正文</th>
+
 									</tr>
 								</thead>
 								<tbody>
-									<%--	<c:forEach items="${userList}" var="user">--%>
+									<c:forEach items="${pubtaskList}" var="pubtask" varStatus="status">
 										<tr>
 											<td><input name="ids" type="checkbox"></td>
-											<td><%--${user.id}--%></td>
-											<td><%--${user.username}--%></td>
-											<td><%--${user.email}--%></td>
-											<td><%--${user.phoneNum}--%></td>
+											<td>${ status.index + 1}</td>
+											<td>${pubtask.tid}</td>
+											<td>${pubtask.courseid}</td>
+											<td>${pubtask.cid}</td>
+											<td>${pubtask.title}</td>
+											<td>${pubtask.article}</td>
 											<td class="text-center">
-												<%--<c:forEach items="${user.roles}" var="role">
-
-
-												${role.roleName}&nbsp;
-												</c:forEach>--%>
-											</td>
-											<td class="text-center">
-												<a href="javascript:void(0);" onclick="delUser('<%--${user.id}--%>')"  class="btn bg-olive btn-xs">删除</a>
+												<a href="${pageContext.request.contextPath}/teacher/deletetask.action?id=${pubtask.id}" class="btn bg-olive btn-xs">删除</a>
 											</td>
 										</tr>
-										<%--</c:forEach>--%>
-
-
+									</c:forEach>
 								</tbody>
 
 							</table>
@@ -184,8 +170,6 @@
 
 					</div>
 					<!-- /.box-body -->
-
-
 
 				</div>
 

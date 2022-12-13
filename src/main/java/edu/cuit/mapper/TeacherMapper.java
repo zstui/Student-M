@@ -19,13 +19,13 @@ public interface TeacherMapper {
 //    })
 //    public List<Course> findAll();*/
     @Select("select * from teacher  where tnum=#{tnum}")
-    public Student findBySnum(int snum);
+    public Teacher findBytnum(String tnum);
     @Select("select * from teacher")
     public List<Teacher> findAll();
     @Insert("insert into teacher values(#{Id},#{tname},#{tnum},#{tsex},#{tage},#{tstatus},#{phone},#{address},#{email},#{pwd},#{entime},#{pic})")
-    public void save(Student student);
+    public void save(Teacher teacher);
     @Delete("delete from teacher where tnum=#{tnum}")
-    public void deleteBySnum(int snum);
+    public void deleteBySnum(String snum);
     @Update("update teacher set tid=#{tid},tname=#{tnum},tsex=#{tsex}," +
             "tage=#{tage},tstatus=#{tstatus},phone=#{phone},address=#{address},email=#{email},pwd=#{pwd},pic=#{pic}")
     public  void update(Teacher teacher);

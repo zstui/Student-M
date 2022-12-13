@@ -68,10 +68,10 @@
 	<div class="wrapper">
 
 		<!-- 页面头部 -->
-		<jsp:include page="sheader.jsp"></jsp:include>
+		<jsp:include page="theader.jsp"></jsp:include>
 		<!-- 页面头部 /-->
 		<!-- 导航侧栏 -->
-		<jsp:include page="saside.jsp"></jsp:include>
+		<jsp:include page="taside.jsp"></jsp:include>
 		<!-- 导航侧栏 /-->
 
 		<!-- 内容区域 -->
@@ -92,42 +92,36 @@
 			</section>
 			<!-- 内容头部 /-->
 
-			<form action="${pageContext.request.contextPath}/user/save"
+			<form action="${pageContext.request.contextPath}/teacher/addtask.action"
 				method="post">
 				<!-- 正文区域 -->
 				<section class="content"> <!--产品信息-->
 
 				<div class="panel panel-default">
-					<div class="panel-heading">
-					</div>
+					<div class="panel-heading">${teacher.getTid()}</div>
 					<div class="row data-type">
 
-						<div class="col-md-2 title">用户名称</div>
+						<div class="col-md-2 title">课程的ID</div>
 						<div class="col-md-4 data">
-							<input type="text" class="form-control" name="username"
+							<input type="text" class="form-control" name="courseid"
 								placeholder="用户名称" value="">
 						</div>
-						<div class="col-md-2 title">密码</div>
+						<div class="col-md-2 title">班级ID</div>
 						<div class="col-md-4 data">
-							<input type="password" class="form-control" name="password"
-								placeholder="密码" value="">
+							<input type="text" class="form-control" name="cid"
+								placeholder="班级ID" value="">
 						</div>
-						<div class="col-md-2 title">邮箱</div>
+						<div class="col-md-2 title">标题</div>
 						<div class="col-md-4 data">
-							<input type="text" class="form-control" name="email"
-								placeholder="邮箱" value="">
+							<input type="text" class="form-control" name="title"
+								placeholder="标题" value="">
 						</div>
-						<div class="col-md-2 title">联系电话</div>
+						<div class="col-md-2 title">正文</div>
 						<div class="col-md-4 data">
-							<input type="text" class="form-control" name="phoneNum"
-								placeholder="联系电话" value="">
+							<input type="text" class="form-control" name="article"
+								placeholder="正文" value="">
 						</div>
-						<div class="col-md-2 title">用户角色</div>
-						<div class="col-md-10 data">
-							<c:forEach items="${roleList}" var="role">
-								<input class="" type="checkbox" name="roleIds" value="${role.id}">${role.roleName}
-							</c:forEach>
-						</div>
+
 
 					</div>
 				</div>

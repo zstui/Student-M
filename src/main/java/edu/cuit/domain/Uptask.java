@@ -14,6 +14,15 @@ public class Uptask {
     private String att;
     private String msg;
     private String grade;
+    private int pubid;
+
+    public int getPubid() {
+        return pubid;
+    }
+
+    public void setPubid(int pubid) {
+        this.pubid = pubid;
+    }
 
     public int getTid() {
         return tid;
@@ -103,6 +112,7 @@ public class Uptask {
         this.grade = grade;
     }
 
+
     @Override
     public String toString() {
         return "Uptask{" +
@@ -117,6 +127,7 @@ public class Uptask {
                 ", att='" + att + '\'' +
                 ", msg='" + msg + '\'' +
                 ", grade='" + grade + '\'' +
+                ", pubid=" + pubid +
                 '}';
     }
 }

@@ -19,17 +19,17 @@ public interface PubtaskMapper {
     //教师
     // 通过自己id查看自己发布task
     @Select("select * from pubtask where tid=#{tid}")
-    public List<Pubtask> findAllByTid(Teacher teacher);
+    public List<Pubtask> findAllByTid(Integer tid);
     //学生
     // 通过班级cid查看老师发布的任务
     @Select("select * from pubtask where cid=#{cid}")
     public  List<Pubtask> findAllByCid(Student student);
 
     //通用
-    @Update("update pubtask set tid=#{tid},courseid=#{courseid},cid=#{cid},title=#{title},article=#{article} where id =#{id}")
+    @Update("update pubtask set courseid=#{courseid},cid=#{cid},title=#{title},article=#{article} where id =#{id}")
     public void update(Pubtask pubtask);
     @Delete("delete from pubtask where id=#{id}")
-    public void delete(Pubtask pubtask);
-    @Insert("insert into pubtask values(#{id},#{tid},#{courseid},#{cid},#{title},#{article})")
+    public void delete(Integer id);
+    @Insert("insert into pubtask(tid,courseid,cid,title,article) values(#{tid},#{courseid},#{cid},#{title},#{article})")
     public void insert(Pubtask pubtask);
 }

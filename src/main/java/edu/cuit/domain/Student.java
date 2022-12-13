@@ -6,7 +6,7 @@ public class Student {
 //    学生姓名
     private String sname;
 //    学生学号
-    private Integer snum;
+    private String snum;
 //    学生性别
     private String ssex;
 //    学生年龄
@@ -51,11 +51,11 @@ public class Student {
         this.sname = sname;
     }
 
-    public Integer getSnum() {
+    public String getSnum() {
         return snum;
     }
 
-    public void setSnum(Integer snum) {
+    public void setSnum(String snum) {
         this.snum = snum;
     }
 
@@ -136,7 +136,7 @@ public class Student {
 
     }
 
-    public Student(Integer sid, String sname, Integer snum, String ssex, Integer sage, Integer cid, String sstatus, Integer phone, String address, String email, String entime, String pic,String pwd) {
+    public Student(Integer sid, String sname, String snum, String ssex, Integer sage, Integer cid, String sstatus, Integer phone, String address, String email, String entime, String pic,String pwd) {
         this.sid = sid;
         this.sname = sname;
         this.snum = snum;

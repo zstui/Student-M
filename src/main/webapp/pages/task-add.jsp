@@ -80,14 +80,14 @@
 			<!-- 内容头部 -->
 			<section class="content-header">
 			<h1>
-				用户管理 <small>用户表单</small>
+				操作栏目 <small>发布作业</small>
 			</h1>
 			<ol class="breadcrumb">
 				<li><a href="${pageContext.request.contextPath}/index.jsp"><i
 						class="fa fa-dashboard"></i> 首页</a></li>
 				<li><a
-					href="${pageContext.request.contextPath}/user/findAll.do">用户管理</a></li>
-				<li class="active">用户表单</li>
+					href="${pageContext.request.contextPath}/user/findAll.do">操作栏目</a></li>
+				<li class="active">发布作业</li>
 			</ol>
 			</section>
 			<!-- 内容头部 /-->
@@ -104,7 +104,7 @@
 						<div class="col-md-2 title">课程的ID</div>
 						<div class="col-md-4 data">
 							<input type="text" class="form-control" name="courseid"
-								placeholder="用户名称" value="">
+								placeholder="课程的ID" value="">
 						</div>
 						<div class="col-md-2 title">班级ID</div>
 						<div class="col-md-4 data">
@@ -116,15 +116,19 @@
 							<input type="text" class="form-control" name="title"
 								placeholder="标题" value="">
 						</div>
-						<div class="col-md-2 title">正文</div>
-						<div class="col-md-4 data">
-							<input type="text" class="form-control" name="article"
-								placeholder="正文" value="">
-						</div>
+
+
+
+
 
 
 					</div>
+
 				</div>
+
+				<br/>
+					<div>正文</div><div>
+						<textarea name="article" cols="100" rows="10" style="resize:none"></textarea></div>
 				<!--订单信息/--> <!--工具栏-->
 				<div class="box-tools text-center">
 					<button type="submit" class="btn bg-maroon">保存</button>

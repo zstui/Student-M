@@ -25,7 +25,8 @@ public interface UptaskMapper {
     // 通过sid查看自己完成的作业
     @Select("select * from uptask where sid=#{sid}")
     public  List<Uptask> findAllByCid(Student student);
-
+    @Select("select * from uptask where pubid=#{pubid}")
+    public List<Uptask> findAllByPubid(Integer pubid);
     //通用
     @Update("update uptask set aid=#{aid},sid=#{sid},tid=#{tid},title=#{title},article=#{article} datetime=#{datetime},status=#{status},attName=#{attName},att=#{att},msg=#{msg} grade=#{grade} where aid =#{aid}")
     public void update(Uptask uptask);

@@ -2,8 +2,10 @@ package edu.cuit.service.impl;
 
 import edu.cuit.domain.Pubtask;
 import edu.cuit.domain.Teacher;
+import edu.cuit.domain.Uptask;
 import edu.cuit.mapper.PubtaskMapper;
 import edu.cuit.mapper.TeacherMapper;
+import edu.cuit.mapper.UptaskMapper;
 import edu.cuit.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,9 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Autowired
     private PubtaskMapper pubtaskMapper;
+
+    @Autowired
+    private UptaskMapper uptaskMapper;
     @Override
     public Teacher findBytnum(String tnum) {
 
@@ -27,6 +32,11 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public void updatePubtask(Pubtask pubtask) {
         pubtaskMapper.update(pubtask);
+    }
+
+    @Override
+    public Pubtask findPubtaskById(Integer id) {
+        return pubtaskMapper.findAllById(id);
     }
 
     @Override
@@ -49,5 +59,11 @@ public class TeacherServiceImpl implements TeacherService {
     public void deteletPubtaskById(Integer id) {
         pubtaskMapper.delete(id);
     }
+
+    @Override
+    public List<Uptask> FindAlluptaskByPubid(Integer id) {
+        return uptaskMapper.findAllByPubid(id);
+    }
+
 
 }

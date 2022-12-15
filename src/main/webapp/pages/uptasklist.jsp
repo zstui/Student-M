@@ -135,27 +135,32 @@
 										<th class="" style="padding-right: 0px"><input
 											id="selall" type="checkbox" class="icheckbox_square-blue">
 										</th>
-										<th class="sorting_desc">教师ID</th>
-										<th class="sorting">课程ID</th>
+										<th class="sorting_desc">学生ID</th>
+										<th class="sorting">审核状态</th>
 										<th class="sorting">课程名称</th>
 										<th class="sorting">班级ID</th>
 										<th class="sorting">标题</th>
+										<th class="sorting">时间</th>
+										<th class="sorting">分数</th>
+										<th class="sorting"></th>
 
 
 
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${pubtaskList}" var="pubtask" >
+									<c:forEach items="${uptasklist}" var="uptask" >
 										<tr>
 											<td><input name="ids" type="checkbox"></td>
-											<td>${pubtask.tid}</td>
-											<td>${pubtask.courseid}</td>
-											<td>名称</td>
-											<td><a href="${pageContext.request.contextPath}/teacher/uptasklist?id=${pubtask.id}" >${pubtask.id}</a></td>
-											<td><a href="${pageContext.request.contextPath}/teacher/totask?id=${pubtask.id}" >${pubtask.title}</a></td>
+											<td>${uptask.sid}</td>
+											<td>${uptask.status}</td>
+											<td>课程名称</td>
+											<td>cid</td>
+											<td>${uptask.title}</td>
+											<td>${uptask.datetime}</td>
+											<td>${uptask.grade}</td>
 											<td class="text-center">
-												<a href="${pageContext.request.contextPath}/teacher/deletetask.action?id=${pubtask.id}" class="btn bg-olive btn-xs">删除</a>
+												<a href="#" class="btn bg-olive btn-xs">批阅</a>
 											</td>
 										</tr>
 									</c:forEach>

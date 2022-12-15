@@ -28,13 +28,7 @@ public class indexController {
         }
         return modelAndView;
     }
-    @RequestMapping("/c")
-    public ModelAndView c(){
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("error");
-        return modelAndView;
 
-    }
 
 
 

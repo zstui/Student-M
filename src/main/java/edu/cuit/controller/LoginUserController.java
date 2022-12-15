@@ -1,5 +1,6 @@
 package edu.cuit.controller;
 
+import edu.cuit.domain.Manager;
 import edu.cuit.domain.Student;
 import edu.cuit.domain.Teacher;
 import edu.cuit.domain.User;
@@ -36,7 +37,8 @@ public class LoginUserController {
                 modelAndView.addObject("user",user);
 
                 if(author.equals("student")){
-
+                    Student student = (Student) user;
+                    session.setAttribute("student",student);
                     modelAndView.setViewName("smain");
                 }
                 else if (author.equals("teacher")){
@@ -45,6 +47,8 @@ public class LoginUserController {
 
                     modelAndView.setViewName("tmain");
                 }else {
+                    Manager manager =(Manager) user;
+                    session.setAttribute("manager",manager);
                     modelAndView.setViewName("mmain");
                 }
 

@@ -2,12 +2,12 @@ package edu.cuit.controller;
 
 import edu.cuit.domain.Pubtask;
 import edu.cuit.domain.Teacher;
-import edu.cuit.service.LoginUserService;
+import edu.cuit.domain.Uptask;
 import edu.cuit.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -55,6 +55,30 @@ public class TeacherController {
 
 
     }
+    @RequestMapping(value = "/teacher/totask")
+    public ModelAndView toatask(@RequestParam("id") Integer id){
+
+
+        /*  Teacher user=teacherService.findBytnum(tnum);*/
+        Pubtask pubtask = teacherService.findPubtaskById(id);
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("pubtask",pubtask);
+        modelAndView.setViewName("updatetask");
+        return modelAndView;
+    }
+    @RequestMapping(value = "/teacher/updatetask.action")
+    @ResponseBody
+    public String updatetaskAction(Pubtask pubtask , HttpServletResponse response) throws Exception{
+
+
+        teacherService.updatePubtask(pubtask);
+        response.getWriter().write("<script>alert('update it already!');window.location='tasklist'; </script>");
+        return null;
+
+
+
+    }
     @RequestMapping(value = "/teacher/deletetask.action")
     @ResponseBody
     public String deletetaskAction(@RequestParam("id") Integer id , HttpServletResponse response) throws Exception{
@@ -70,27 +94,36 @@ public class TeacherController {
 
     @RequestMapping(value = "/teacher/tasklist")
     public ModelAndView taskList( HttpServletRequest request){
-
         /*  Teacher user=teacherService.findBytnum(tnum);*/
         HttpSession session = request.getSession(true);
         Teacher teacher= (Teacher) session.getAttribute("teacher");
-
         List<Pubtask> pubtaskList =teacherService.FindAllPubtaskByTnum(teacher.getTid());
-
         ModelAndView modelAndView = new ModelAndView();
-
-
         modelAndView.addObject("pubtaskList",pubtaskList);
-
-
         modelAndView.setViewName("pubtask-list");
-
-
-
-
         return modelAndView;
     }
 
+    @RequestMapping(value = "/teacher/uptasklist")
+    public ModelAndView uptaskList( @RequestParam("id")Integer id){
+        List<Uptask> uptaskList =teacherService.FindAlluptaskByPubid(id);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("uptasklist",uptaskList);
+        modelAndView.setViewName("uptasklist");
+        return modelAndView;
+    }
+
+ /*   @RequestMapping(value = "/teacher/uptasklist")
+    public String uptaskList(@RequestParam("id")Integer id, Model model){
+        //转发二
+        List<Uptask> uptaskList =teacherService.FindAlluptaskByPubid(id);
+
+        model.addAttribute("uptasklist",uptaskList);
+
+
+
+        return "forward:/pages/uptasklist.jsp";
+    }*/
 
     /*@Autowired
     private AccountService accountService;

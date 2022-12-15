@@ -20,6 +20,8 @@ public interface PubtaskMapper {
     // 通过自己id查看自己发布task
     @Select("select * from pubtask where tid=#{tid}")
     public List<Pubtask> findAllByTid(Integer tid);
+    @Select("select * from pubtask where id=#{id}")
+    public Pubtask findAllById(Integer id);
     //学生
     // 通过班级cid查看老师发布的任务
     @Select("select * from pubtask where cid=#{cid}")

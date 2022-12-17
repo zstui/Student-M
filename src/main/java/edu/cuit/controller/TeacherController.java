@@ -55,6 +55,29 @@ public class TeacherController {
 
 
     }
+    @RequestMapping(value = "/teacher/touptask")
+    public ModelAndView touptask(@RequestParam("aid")Integer aid){
+        Uptask uptask=teacherService.findUptask(aid);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("uptask",uptask);
+        modelAndView.setViewName("uptaskinfo");
+        return modelAndView;
+    }
+    @RequestMapping(value = "/teacher/markuptask.action")
+    public ModelAndView markuptaskAction(@RequestParam("aid")Integer aid ,@RequestParam("grade")Integer grade, HttpServletResponse response,HttpServletRequest request) throws Exception{
+        HttpSession session = request.getSession(true);
+        Teacher teacher= (Teacher) session.getAttribute("teacher");
+        Integer CurrentId=teacherService.updateGrade(grade,aid);
+        ModelAndView modelAndView = new ModelAndView("redirect:/teacher/uptasklist?id="+CurrentId);
+
+
+        return modelAndView;
+
+
+
+    }
+
+
     @RequestMapping(value = "/teacher/totask")
     public ModelAndView toatask(@RequestParam("id") Integer id){
 
@@ -74,6 +97,20 @@ public class TeacherController {
 
         teacherService.updatePubtask(pubtask);
         response.getWriter().write("<script>alert('update it already!');window.location='tasklist'; </script>");
+        return null;
+
+
+
+    }
+    @RequestMapping(value = "/teacher/updateinfo.action")
+    @ResponseBody
+    public String updatetinfo(Teacher teacher , HttpServletResponse response,HttpServletRequest request) throws Exception{
+        HttpSession session = request.getSession(true);//�½�session����
+        teacherService.updateInfo(teacher);
+        Teacher teacher1=teacherService.findBytnum(teacher.getTnum());
+        session.setAttribute("teacher",teacher1);
+
+        response.getWriter().write("<script>alert('update it already!');window.location='../pages/tinfo.jsp'; </script>");
         return null;
 
 
@@ -110,6 +147,7 @@ public class TeacherController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("uptasklist",uptaskList);
         modelAndView.setViewName("uptasklist");
+
         return modelAndView;
     }
 

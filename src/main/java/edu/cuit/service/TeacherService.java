@@ -22,5 +22,13 @@ public interface TeacherService {
     public void deteletPubtaskById(Integer id);
 
 
-    List<Uptask> FindAlluptaskByPubid(Integer id);
+   public List<Uptask> FindAlluptaskByPubid(Integer id);
+
+    public  void updateInfo(Teacher teacher);
+
+    public void updateUptask(Uptask uptask);
+
+    public Integer updateGrade(Integer grade,Integer aid);
+
+    public Uptask findUptask(Integer aid);
 }

@@ -18,9 +18,21 @@ public class Teacher {
 //     地址
     private String address;
 //     密码
+private String email;
     private String pwd;
-//     照片地址
     private String pic;
+
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    //     照片地址
+
 
     public Integer getTid() {
         return tid;
@@ -113,7 +125,8 @@ public class Teacher {
                 ", tstatus='" + tstatus + '\'' +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
-                ", pswd='" + pwd + '\'' +
+                ", email='" + email + '\'' +
+                ", pwd='" + pwd + '\'' +
                 ", pic='" + pic + '\'' +
                 '}';
     }

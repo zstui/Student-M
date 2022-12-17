@@ -65,5 +65,26 @@ public class TeacherServiceImpl implements TeacherService {
         return uptaskMapper.findAllByPubid(id);
     }
 
+    @Override
+    public void updateInfo(Teacher teacher) {
+        teacherMapper.update(teacher);
+    }
+
+    @Override
+    public void updateUptask(Uptask uptask) {
+        uptaskMapper.update(uptask);
+    }
+
+    @Override
+    public Integer updateGrade(Integer grade,Integer aid) {
+        uptaskMapper.updateGrade(grade,aid);
+        return uptaskMapper.findAllByAid(aid);
+    }
+
+    @Override
+    public Uptask findUptask(Integer aid) {
+        return uptaskMapper.findByaid(aid);
+    }
+
 
 }

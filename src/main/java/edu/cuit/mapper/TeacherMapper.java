@@ -26,7 +26,7 @@ public interface TeacherMapper {
     public void save(Teacher teacher);
     @Delete("delete from teacher where tnum=#{tnum}")
     public void deleteBySnum(String snum);
-    @Update("update teacher set tid=#{tid},tname=#{tnum},tsex=#{tsex}," +
+    @Update("update teacher set tname=#{tnum},tsex=#{tsex}," +
             "tage=#{tage},tstatus=#{tstatus},phone=#{phone},address=#{address},email=#{email},pwd=#{pwd},pic=#{pic}")
     public  void update(Teacher teacher);
 

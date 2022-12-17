@@ -41,26 +41,26 @@
 						href="${pageContext.request.contextPath}/teacher/tasklist"> <i
 							class="fa fa-circle-o"></i> 任务清单
 					</a></li>
-					<li><a
+					<%--<li><a
 						href="${pageContext.request.contextPath}/pages/syslog-list.jsp"> <i
 							class="fa fa-circle-o"></i> 提交作业
-					</a></li>
+					</a></li>--%>
 				</ul></li>
 			<li class="treeview"><a href="#"> <i class="fa fa-cube"></i>
-					<span>基础数据</span> <span class="pull-right-container"> <i
+					<span>个人</span> <span class="pull-right-container"> <i
 						class="fa fa-angle-left pull-right"></i>
 				</span>
 			</a>
 				<ul class="treeview-menu">
 
 					<li><a
-						href="#">
-							<i class="fa fa-circle-o"></i> 产品管理
+						href="${pageContext.request.contextPath}/pages/tinfo.jsp">
+							<i class="fa fa-circle-o"></i> 个人信息
 					</a></li>
-					<li><a
+					<%--<li><a
 						href="#">
 							<i class="fa fa-circle-o"></i> 订单管理
-					</a></li>
+					</a></li>--%>
 
 				</ul></li>
 

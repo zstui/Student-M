@@ -157,10 +157,10 @@
 											<td>课程名称</td>
 											<td>cid</td>
 											<td>${uptask.title}</td>
-											<td>${uptask.datetime}</td>
+											<td>${uptask.date}</td>
 											<td>${uptask.grade}</td>
 											<td class="text-center">
-												<a href="#" class="btn bg-olive btn-xs">批阅</a>
+												<a href="${pageContext.request.contextPath}/teacher/touptask?aid=${uptask.aid}" class="btn bg-olive btn-xs">批阅</a>
 											</td>
 										</tr>
 									</c:forEach>

@@ -73,8 +73,8 @@
 
 		<!-- 内容区域 -->
 		<div class="content-wrapper">
-			学生id${student.sid}
-			学生:${student.sname}
+			学生学号${student.snum}
+			学生姓名${student.sname}
 		</div>
 		<!-- 内容区域 /-->
 

@@ -11,11 +11,11 @@ public interface StudentService {
 
     public List<Uptask> FindAllUptaskBycid(Integer cid);
 
-    public List<Pubtask> FindAllPubtaskByPubid(Integer Pubid);
-
-    public List<Pubtask> FindAllPubtaskBySnum(String sname);
-
-    public List<Pubtask> FindAllPubtask();
+//    public List<Pubtask> FindAllPubtaskByPubid(Integer Pubid);
+//
+//    public List<Pubtask> FindAllPubtaskBySnum(String sname);
+//
+//    public List<Pubtask> FindAllPubtask();
 
     public void UpdateUptask(Uptask uptask);
 
@@ -23,4 +23,5 @@ public interface StudentService {
 
     public void DeleteUptask(Uptask uptask);
 
+    public void UpdateInfo(Student student);
 }

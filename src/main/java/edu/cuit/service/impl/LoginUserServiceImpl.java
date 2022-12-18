@@ -26,6 +26,8 @@ public class LoginUserServiceImpl implements LoginUserService {
 
         if(author.equals("student")){
             Student student = studentMapper.findBySnum(num);
+            if(student==null)
+                return null;
             if(student.getPwd().equals(pwd)){
                 return student;
             }else {
@@ -34,6 +36,8 @@ public class LoginUserServiceImpl implements LoginUserService {
 
         }else if(author.equals("teacher")){
             Teacher teacher = teacherMapper.findBytnum(num);
+            if(teacher==null)
+                return null;
             if(teacher.getPwd().equals(pwd)){
                 return teacher;
             }else {
@@ -42,6 +46,8 @@ public class LoginUserServiceImpl implements LoginUserService {
 
         }else{
             Manager manager = managerMapper.findByMusername(num);
+            if(manager==null)
+                return null;
             if(manager.getPwd().equals(pwd)){
                 return manager;
             }else {

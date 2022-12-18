@@ -27,6 +27,6 @@ public interface StudentMapper {
     public List<Student> findAll();
     @Update("update student set sname=#{snum},ssex=#{ssex}," +
             "sage=#{sage},cid=#{cid},sstatus=#{sstatus},phone=#{phone},address=#{address},email=#{email},pwd=#{pwd},pic=#{pic} where sid=#{sid}")
-    public  void update(Teacher teacher);
+    public  void update(Student student);
 
 }

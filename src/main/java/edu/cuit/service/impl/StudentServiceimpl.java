@@ -60,4 +60,9 @@ public class StudentServiceimpl implements StudentService {
         studentMapper.update(student);
     }
 
+    @Override
+    public List<Pubtask> FindAllPubtaskBycid(Integer cid){
+        return pubtaskMapper.findAllBycid(cid);
+    }
+
 }

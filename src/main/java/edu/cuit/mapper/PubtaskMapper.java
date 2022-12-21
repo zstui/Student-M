@@ -27,6 +27,9 @@ public interface PubtaskMapper {
     @Select("select * from pubtask where cid=#{cid}")
     public  List<Pubtask> findAllByCid(Student student);
 
+    @Select("select * from pubtask where cid=#{cid}")
+    public List<Pubtask> findAllBycid(Integer cid);
+
     //通用
     @Update("update pubtask set courseid=#{courseid},cid=#{cid},title=#{title},article=#{article} where id =#{id}")
     public void update(Pubtask pubtask);

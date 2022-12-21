@@ -6,7 +6,9 @@ public class Course {
     //    课程名称
     private String coursename;
 
+    private String tname;
 
+    private String coursetask;
     public Integer getCourseid() {
         return courseid;
     }
@@ -23,22 +25,41 @@ public class Course {
         this.coursename = coursename;
     }
 
+    public String getTname() {
+        return tname;
+    }
+
+    public void setTname(String tname) {
+        this.tname = tname;
+    }
+
+    public String getCoursetask() {
+        return coursetask;
+    }
+
+    public void setCoursetask(String coursetask) {
+        this.coursetask = coursetask;
+    }
 
     public Course(){
 
     }
 
 
-    public Course(Integer courseid, String coursename) {
+    public Course(Integer courseid, String coursename, String tname, String coursetask) {
         this.courseid = courseid;
         this.coursename = coursename;
+        this.tname = tname;
+        this.coursetask = coursetask;
     }
 
     @Override
     public String toString() {
-        return "course{" +
+        return "Course{" +
                 "courseid=" + courseid +
                 ", coursename='" + coursename + '\'' +
+                ", tname='" + tname + '\'' +
+                ", coursetask='" + coursetask + '\'' +
                 '}';
     }
 }

@@ -145,21 +145,21 @@
 
                             </tr>
                             </thead>
-<%--                            <tbody>--%>
-<%--                            <c:forEach items="${pubtaskList}" var="pubtask" >--%>
-<%--                                <tr>--%>
-<%--                                    <td><input name="ids" type="checkbox"></td>--%>
-<%--                                    <td>${pubtask.tid}</td>--%>
-<%--                                    <td>${pubtask.courseid}</td>--%>
-<%--                                    <td>名称</td>--%>
-<%--                                    <td><a href="${pageContext.request.contextPath}/teacher/uptasklist?id=${pubtask.id}" >${pubtask.id}</a></td>--%>
-<%--                                    <td><a href="${pageContext.request.contextPath}/teacher/totask?id=${pubtask.id}" >${pubtask.title}</a></td>--%>
-<%--                                    <td class="text-center">--%>
-<%--                                        <a href="${pageContext.request.contextPath}/teacher/deletetask.action?id=${pubtask.id}" class="btn bg-olive btn-xs">删除</a>--%>
-<%--                                    </td>--%>
-<%--                                </tr>--%>
-<%--                            </c:forEach>--%>
-<%--                            </tbody>--%>
+                            <tbody>
+                            <c:forEach items="${pubtaskList1}" var="pubtask" >
+                                <tr>
+                                    <td><input name="ids" type="checkbox"></td>
+                                    <td>${pubtask.cid}</td>
+                                    <td>${pubtask.courseid}</td>
+                                    <td>名称</td>
+                                    <td><a href="${pageContext.request.contextPath}/teacher/uptasklist?id=${pubtask.id}"> ${pubtask.id} </a></td>
+<%--                                    <td><a href="${pageContext.request.contextPath}/student/gettask?id=${pubtask.cid}"> ${pubtask.title} </a></td>--%>
+                                    <td class="text-center">
+                                        <a href="${pageContext.request.contextPath}/teacher/deletetask.action?id=${pubtask.id}" class="btn bg-olive btn-xs">查看</a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
 
                         </table>
                         <!--数据列表/-->

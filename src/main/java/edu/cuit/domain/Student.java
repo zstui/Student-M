@@ -24,8 +24,9 @@ public class Student {
 //    学生入学时间
     private String entime;
 //    学生头像
-    private String pic;
     private String pwd;
+
+    private String pic;
 
     public String getPwd() {
         return pwd;
@@ -131,12 +132,11 @@ public class Student {
         this.pic = pic;
     }
 
-
     public Student(){
 
     }
 
-    public Student(Integer sid, String sname, String snum, String ssex, Integer sage, Integer cid, String sstatus, Integer phone, String address, String email, String entime, String pic,String pwd) {
+    public Student(Integer sid, String sname, String snum, String ssex, Integer sage, Integer cid, String sstatus, Integer phone, String address, String email, String entime,String pwd,String pic) {
         this.sid = sid;
         this.sname = sname;
         this.snum = snum;
@@ -148,8 +148,8 @@ public class Student {
         this.address = address;
         this.email = email;
         this.entime = entime;
-        this.pic = pic;
         this.pwd=pwd;
+        this.pic=pic;
     }
 
     @Override

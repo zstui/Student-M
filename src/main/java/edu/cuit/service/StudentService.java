@@ -24,4 +24,6 @@ public interface StudentService {
     public void DeleteUptask(Uptask uptask);
 
     public void UpdateInfo(Student student);
+
+    public List<Pubtask> FindAllPubtaskBycid(Integer Cid);
 }

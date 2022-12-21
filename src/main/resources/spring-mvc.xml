@@ -22,5 +22,11 @@ http://www.springframework.org/schema/context/spring-context.xsd">
     <!--开发静态资源访问权限-->
     <mvc:default-servlet-handler></mvc:default-servlet-handler>
 
+    <!--配置文件上传解析器-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8"></property>
+        <property name="maxUploadSize" value="1024000"></property>
+    </bean>
+
 
 </beans>

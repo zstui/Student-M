@@ -19,6 +19,7 @@ public interface StudentMapper {
     //简单的增删改查
     @Select("select * from student  where snum=#{snum}")
     public Student findBySnum(String snum);
+
     @Insert("insert into student values(#{Id},#{sname},#{snum},#{ssex},#{sage},#{cid},#{sstatus},#{phone},#{address},#{email},#{pwd},#{entime},#{pic})")
     public void save(Student student);
     @Delete("delete from student where snum=#{snum}")

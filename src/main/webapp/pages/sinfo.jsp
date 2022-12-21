@@ -99,15 +99,20 @@
       <section class="content"> <!--产品信息-->
 
         <div class="panel panel-default">
-          <div class="panel-heading">${student.getSid()}</div>
+          <div class="panel-heading">${student.getSname()}</div>
           <div class="row data-type">
 
             <div class="col-md-2 title">学生ID</div>
             <div class="col-md-4 data">
+              <input type="text" class="form-control" name="sid"
+                     placeholder="${student.sid}" value="${student.sid}">
+            </div>
+            <div class="col-md-2 title">学生姓名</div>
+            <div class="col-md-4 data">
               <input type="text" class="form-control" name="sname"
                      placeholder="${student.sname}" value="${student.sname}">
             </div>
-            <div class="col-md-2 title">学号</div>
+            <div class="col-md-2 title">学生学号</div>
             <div class="col-md-4 data">
               <input type="text" class="form-control" name="snum"
                      placeholder="${student.snum}" value="${student.snum}">
@@ -119,7 +124,7 @@
             </div>
             <div class="col-md-2 title">年龄</div>
             <div class="col-md-4 data">
-              <input type="text" class="form-control" name="tage"
+              <input type="text" class="form-control" name="sage"
                      placeholder="${student.sage}" value="${student.sage}">
             </div>
             <div class="col-md-2 title">班级</div>

@@ -34,8 +34,8 @@
 				<ul class="treeview-menu">
 
 					<li><a
-							href="${pageContext.request.contextPath}/student/info"> <i
-							class="fa fa-circle-o"></i> 个人信息
+							href="${pageContext.request.contextPath}/student/course-grade"> <i
+							class="fa fa-circle-o"></i> 成绩查询
 					</a></li>
 					<li><a
 							href="${pageContext.request.contextPath}/student/course"> <i
@@ -43,19 +43,21 @@
 					</a></li>
 				</ul></li>
 
+			<li class="treeview"><a href="#"> <i class="fa fa-cogs"></i>
+				<span>个人</span> <span class="pull-right-container"> <i
+						class="fa fa-angle-left pull-right"></i>
+				</span>
+
+
 			</a>
-				<%--				<ul class="treeview-menu">--%>
+				<ul class="treeview-menu">
 
-				<%--					<li><a--%>
-				<%--						href="#">--%>
-				<%--							<i class="fa fa-circle-o"></i> 产品管理--%>
-				<%--					</a></li>--%>
-				<%--					<li><a--%>
-				<%--						href="#">--%>
-				<%--							<i class="fa fa-circle-o"></i> 订单管理--%>
-				<%--					</a></li>--%>
 
-				<%--				</ul>--%></li>
+					<li><a
+							href="${pageContext.request.contextPath}/student/info"> <i
+							class="fa fa-circle-o"></i> 个人信息
+					</a></li>
+				</ul></li>
 
 		</ul>
 	</section>

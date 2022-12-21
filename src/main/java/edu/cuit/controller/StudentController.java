@@ -70,18 +70,21 @@ public class StudentController {
     }
 
     @RequestMapping(value = "/student/gettask")
-    public ModelAndView gettask(@RequestParam("id") Integer id){
-        Pubtask pubtask = teacherService.findPubtaskById(id);
+    public ModelAndView gettask(@RequestParam("title") String title){
+        List<Pubtask> pubtask = studentService.FindPubtaskByTitle(title);
         ModelAndView modelAndView =new ModelAndView();
         modelAndView.addObject("pubtask",pubtask);
-        modelAndView.setViewName("scourse");
+        modelAndView.setViewName("up-task");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/student/findtask")
-    @ResponseBody
-    public String Findetask(@RequestParam("id") Integer id,HttpServletResponse response) throws IOException {
-        response.getWriter().write("<<script>window.location='stask'; </script>>");
-        return null;
+    @RequestMapping(value = "/studnet/uptask")
+    public ModelAndView uptask(){
+        ModelAndView modelAndView = new ModelAndView();
+
+
+
+
+        return modelAndView;
     }
 }

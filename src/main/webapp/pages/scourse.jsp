@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" deferredSyntaxAllowedAsLiteral="true"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -114,7 +114,7 @@
 
                                     <button type="button" class="btn btn-default" title="刷新">
                                         <i class="fa fa-refresh"></i>
-                                        <a href="/pages/scourse.jsp">刷新</a>
+                                        <a href="/student/course">刷新</a>
                                     </button>
                                 </div>
                             </div>
@@ -136,27 +136,27 @@
                                 <th class="" style="padding-right: 0px"><input
                                         id="selall" type="checkbox" class="icheckbox_square-blue">
                                 </th>
-                                <th class="sorting_desc">课程ID</th>
-                                <th class="sorting">课程名称</th>
-                                <th class="sorting">课程老师</th>
-                                <th class="sorting">课程作业</th>
+                                <th class="sorting_desc">老师id</th>
+                                <th class="sorting">课程id</th>
+                                <th class="sorting">班级id</th>
+                                <th class="sorting">标题</th>
 
 
 
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${pubtaskList1}" var="pubtask" >
+                            <c:forEach items="${pubtaskList1}" var="pubtaskList" >
                                 <tr>
                                     <td><input name="ids" type="checkbox"></td>
-                                    <td>${pubtask.cid}</td>
-                                    <td>${pubtask.courseid}</td>
-                                    <td>名称</td>
-                                    <td><a href="${pageContext.request.contextPath}/teacher/uptasklist?id=${pubtask.id}"> ${pubtask.id} </a></td>
-<%--                                    <td><a href="${pageContext.request.contextPath}/student/gettask?id=${pubtask.cid}"> ${pubtask.title} </a></td>--%>
-                                    <td class="text-center">
-                                        <a href="${pageContext.request.contextPath}/teacher/deletetask.action?id=${pubtask.id}" class="btn bg-olive btn-xs">查看</a>
-                                    </td>
+                                    <td>${pubtaskList.tid}</td>
+                                    <td>${pubtaskList.courseid}</td>
+                                    <td>${pubtaskList.cid}</td>
+<%--                                    <td><a href="${pageContext.request.contextPath}/teacher/uptasklist?id=${pubtask.id}"> ${pubtask.id} </a></td>--%>
+                                    <td><a href="${pageContext.request.contextPath}/student/gettask?title=${pubtaskList.title}"> ${pubtaskList.title} </a></td>
+<%--                                    <td class="text-center">--%>
+<%--                                        <a href="${pageContext.request.contextPath}/student/findtask?title=#{pubtaskList.title}" class="btn bg-olive btn-xs">查看</a>--%>
+<%--                                    </td>--%>
                                 </tr>
                             </c:forEach>
                             </tbody>

@@ -37,4 +37,6 @@ public interface PubtaskMapper {
     public void delete(Integer id);
     @Insert("insert into pubtask(tid,courseid,cid,title,article) values(#{tid},#{courseid},#{cid},#{title},#{article})")
     public void insert(Pubtask pubtask);
+    @Select("select * from pubtask where title=#{title}" )
+    public List<Pubtask> FindByTitle(String title);
 }

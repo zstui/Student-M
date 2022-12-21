@@ -26,4 +26,6 @@ public interface StudentService {
     public void UpdateInfo(Student student);
 
     public List<Pubtask> FindAllPubtaskBycid(Integer Cid);
+
+    public List<Pubtask> FindPubtaskByTitle(String title);
 }

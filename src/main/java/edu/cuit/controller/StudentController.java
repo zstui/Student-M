@@ -36,16 +36,16 @@ public class StudentController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/student/course")
-    public ModelAndView docourse(){
-        ModelAndView modelAndView = new ModelAndView();
-        //待修改
-//        List<Uptask> uptask = studentService.FindAllUptaskBycid(cid);
-        //
-//        modelAndView.addObject(uptask);
-        modelAndView.setViewName("scourse");
-        return modelAndView;
-    }
+//    @RequestMapping(value = "/student/course")
+//    public ModelAndView docourse(){
+//        ModelAndView modelAndView = new ModelAndView();
+//        //待修改
+////        List<Uptask> uptask = studentService.FindAllUptaskBycid(cid);
+//        //
+////        modelAndView.addObject(uptask);
+//        modelAndView.setViewName("scourse");
+//        return modelAndView;
+//    }
 
     @RequestMapping(value = "/student/updateinfo.do")
     @ResponseBody
@@ -58,7 +58,7 @@ public class StudentController {
         return null;
     }
 
-    @RequestMapping(value = "/student/stask")
+    @RequestMapping(value = "/student/course")
     public ModelAndView stask(HttpServletRequest request){
         HttpSession session = request.getSession(true);
         Student student = (Student) session.getAttribute("student");

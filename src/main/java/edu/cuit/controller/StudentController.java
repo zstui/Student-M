@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,8 +33,6 @@ public class StudentController {
     private StudentService studentService;
     @Autowired
     private TeacherService teacherService;
-
-
     @RequestMapping(value = "/student/info")
     public ModelAndView showpersonal(){
         ModelAndView modelAndView = new ModelAndView();
@@ -75,15 +74,16 @@ public class StudentController {
     }
 
     @RequestMapping(value = "/student/gettask")
-    public ModelAndView gettask(@Param("title") String title, HttpServletRequest request){
+    public ModelAndView gettask(@RequestParam("title") String title, HttpServletRequest request){
         HttpSession session = request.getSession(true);
         Student student =(Student) session.getAttribute("student");
-        List<Pubtask> pubtask = studentService.FindPubtaskByTitle(title,student.getCid());
+        Pubtask pubtask = studentService.FindPubtaskByTitle(title,student.getCid());
         ModelAndView modelAndView =new ModelAndView();
         modelAndView.addObject("pubtask",pubtask);
         modelAndView.setViewName("up-task");
         return modelAndView;
     }
+
 
 //    @RequestMapping(value = "/student/gettask")
 //    public ModelAndView gettask(@Param("title") String title, HttpServletRequest request){
@@ -105,8 +105,33 @@ public class StudentController {
 
         return modelAndView;
     }
+    @RequestMapping(value = "/student/grade")
+    public ModelAndView gradelist(HttpServletRequest request){
+        ModelAndView modelAndView = new ModelAndView();
+        HttpSession session = request.getSession(true);
+        Student student = (Student) session.getAttribute("student");
+        List<Uptask> uptaskList=studentService.finduptaskBySid(student.getSid());
+        modelAndView.addObject("uptasklist",uptaskList);
+        modelAndView.setViewName("sgradelist");
 
+
+        return modelAndView;
+    }
     @RequestMapping(value = "/student/uptaskfile.do")
+    @ResponseBody
+    public String submituptask(@RequestParam("pubid") Integer pubid,
+                               @RequestParam("title") String title,
+                               @RequestParam("article") String article,
+                               @RequestParam(value = "file",required = false) CommonsMultipartFile file,
+                               HttpServletRequest request,
+                               HttpServletResponse response) throws IOException {
+
+        Uptask uptask=studentService.submitUptaskinfo(pubid,title,article,file,request);
+        studentService.submitUptaskAll(uptask);
+        response.getWriter().write("<script>alert('submit it already!');window.location='course'; </script>");
+        return null;
+    }
+    @RequestMapping(value = "/student/uptaskfile1.do")
     @ResponseBody
     public Map<String,String> uptask(MultipartFile file,HttpServletRequest request) throws IOException {
         Map<String,String> ret = new HashMap<String,String>();

@@ -13,7 +13,7 @@
 				<p>
 					<security:authentication property="principal.username" />
 				</p>
-				<a href="#"><i class="fa fa-circle text-success"></i>${user.sname}</a>
+				<a href="#"><i class="fa fa-circle text-success"></i>${student.sname}</a>
 			</div>
 		</div>
 
@@ -34,7 +34,7 @@
 				<ul class="treeview-menu">
 
 					<li><a
-							href="${pageContext.request.contextPath}/student/course-grade"> <i
+							href="${pageContext.request.contextPath}/student/grade"> <i
 							class="fa fa-circle-o"></i> 成绩查询
 					</a></li>
 					<li><a

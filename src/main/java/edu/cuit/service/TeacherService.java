@@ -4,6 +4,10 @@ import edu.cuit.domain.Pubtask;
 import edu.cuit.domain.Teacher;
 import edu.cuit.domain.Uptask;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 public interface TeacherService {
@@ -31,4 +35,6 @@ public interface TeacherService {
     public Integer updateGrade(Integer grade,Integer aid);
 
     public Uptask findUptask(Integer aid);
+
+    void downlaodFile(Integer aid, HttpServletRequest request, HttpServletResponse response) throws IOException;
 }

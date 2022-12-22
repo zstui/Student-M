@@ -98,7 +98,7 @@
 
 				<div class="panel panel-default">
 					<div class="panel-heading">${uptask.aid}</div>
-					<input name="aid" value="${uptask.aid}" readonly="readonly" unselectable="on"/>
+					<input name="aid" value="${uptask.aid}" type="hidden" />
 					<%--<input name="grade" value="${uptask.aid}">--%>
 					<div class="row data-type">
 
@@ -118,7 +118,7 @@
 						</div>
 						<div class="col-md-2 title">时间</div>
 						<div class="col-md-4 data">
-							${uptask.date}
+							${uptask.datetime}
 						</div>
 						<div class="col-md-2 title">审阅状态</div>
 						<div class="col-md-4 data">
@@ -126,15 +126,15 @@
 						</div>
 						<div class="col-md-2 title">附件名称</div>
 						<div class="col-md-4 data">
-							${uptask.attName}
+							<a href="${pageContext.request.contextPath}/teacher/download?aid=${uptask.aid}">${uptask.attName}</a>
 						</div>
 						<div class="col-md-2 title">附件</div>
 						<div class="col-md-4 data">
-							${uptask.att}
+
 						</div>
 						<div class="col-md-2 title">回复消息</div>
 						<div class="col-md-4 data">
-							${uptask.msg}
+							<input type="text" name="msg" value="${uptask.msg}">
 						</div>
 
 						<div class="col-md-2 title">分数</div>

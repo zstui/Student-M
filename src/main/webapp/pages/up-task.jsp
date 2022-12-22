@@ -99,37 +99,42 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">${student.sname}</div>
                     <div class="row data-type">
-                        <c:forEach items="${pubtask}" var="pubtasklist" >
                         <tr>
-                            <div class="col-md-2 title">课程的ID : ${pubtasklist.courseid}</div>
-                            <div class="col-md-2 title">班级ID  : ${pubtasklist.cid}</div>
-                            <div class="col-md-2 title">标题  : ${pubtasklist.title}</div>
+                            <div class="col-md-2 title">课程的ID : ${pubtask.courseid}</div>
+                            <div class="col-md-2 title">班级ID  : ${pubtask.cid}</div>
+                            <div class="col-md-2 title">标题  : ${pubtask.title}</div>
                         </tr>
-                        </c:forEach>
+
 
 
                     </div>
 
                 </div>
 
-                <c:forEach items="${pubtask}" var="pubtasklist" >
-                    <br/>
-                    <div>正文</div><div>
-                    <textarea name="article" cols="100" rows="10" style="resize:none">${pubtasklist.article}</textarea></div>
 
-                    <form action="/student/uptaskfile.do" method="post" enctype="multipart/form-data" name="file">
-                        <input type="file" name="attname" multiple="multiple"/>
+                    <br/>
+                    <div>正文</div>
+                <div>
+                   <div>${pubtask.article}</div>
+
+                    <form action="${pageContext.request.contextPath}/student/uptaskfile.do" method="post" enctype="multipart/form-data" >
+                        <input name="pubid" value="${pubtask.id}" type="hidden"  >
+                        <input name="title" value="${pubtask.title}" type="hidden" >
+                        <textarea rows="10" cols="100" name="article"></textarea>
+                        <input type="file" name="file"  multiple="multiple"/>
                         <input id="attname" type="hidden" name="attname">
+
+                        <div class="box-tools text-center">
+                            <button type="submit" class="btn bg-maroon">保存</button>
+                            <button type="button" class="btn bg-default"
+                                    onclick="history.back(-1);">返回</button>
+                        </div>
                     </form>
-                </c:forEach>
+
 
 
                 <!--订单信息/--> <!--工具栏-->
-                <div class="box-tools text-center">
-                    <button type="submit" class="btn bg-maroon">保存</button>
-                    <button type="button" class="btn bg-default"
-                            onclick="history.back(-1);">返回</button>
-                </div>
+
 
                 <!--工具栏/--> </section>
             <!-- 正文区域 /-->

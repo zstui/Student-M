@@ -15,12 +15,24 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
 public class TeacherController {
     @Autowired
     private TeacherService teacherService;
+
+
+    //老师下载学生作业附件
+    @RequestMapping("/teacher/download")
+    public String downloadFile(@RequestParam("aid")Integer aid,HttpServletRequest request,HttpServletResponse response) throws IOException {
+
+        teacherService.downlaodFile(aid,request,response);
+        response.getWriter().write("<script>alert('downloadSuccessed!');window.history.back(); </script>");
+        return null;
+    }
+
 
     @RequestMapping(value = "/teacher/addtask")
     public ModelAndView toaddtask(){
@@ -41,7 +53,7 @@ public class TeacherController {
 
         return modelAndView;
     }
-
+//老师添加作业
     @RequestMapping(value = "/teacher/addtask.action")
     @ResponseBody
     public String addtaskAction(Pubtask pubtask , HttpServletResponse response,HttpServletRequest request) throws Exception{
@@ -55,6 +67,7 @@ public class TeacherController {
 
 
     }
+    //查看详细的uptask
     @RequestMapping(value = "/teacher/touptask")
     public ModelAndView touptask(@RequestParam("aid")Integer aid){
         Uptask uptask=teacherService.findUptask(aid);
@@ -63,6 +76,7 @@ public class TeacherController {
         modelAndView.setViewName("uptaskinfo");
         return modelAndView;
     }
+    //批阅作业
     @RequestMapping(value = "/teacher/markuptask.action")
     public ModelAndView markuptaskAction(@RequestParam("aid")Integer aid ,@RequestParam("grade")Integer grade, HttpServletResponse response,HttpServletRequest request) throws Exception{
         HttpSession session = request.getSession(true);
@@ -90,6 +104,7 @@ public class TeacherController {
         modelAndView.setViewName("updatetask");
         return modelAndView;
     }
+    //修改发布的作业
     @RequestMapping(value = "/teacher/updatetask.action")
     @ResponseBody
     public String updatetaskAction(Pubtask pubtask , HttpServletResponse response) throws Exception{

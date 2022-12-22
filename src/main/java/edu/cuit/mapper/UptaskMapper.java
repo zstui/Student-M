@@ -19,7 +19,8 @@ public interface UptaskMapper {
     @Select("select * from uptask where tid=#{tid}")
     public List<Uptask> findAllByTid(Teacher teacher);
     @Select("select pubid from uptask where aid=#{aid}")
-    public Integer findAllByAid(Integer aid );
+    public Integer findAllByAid(Integer aid);
+
     //学生
     // 通过sid查看自己完成的作业
     @Select("select * from uptask where sid=#{sid}")
@@ -36,7 +37,8 @@ public interface UptaskMapper {
     public void updateGrade(@Param("grade") Integer grade,@Param("aid") Integer aid );
     @Delete("delete from uptask where id=#{id}")
     public void delete(Uptask uptask);
-    @Insert("insert into uptask values(#{aid},#{sid},tid=#{tid},#{article},#{datetime},#{status},#{attName},#{att},#{msg} #{grade})")
+    @Insert("insert into uptask(tid,sid,title,article,status,attName,att,msg,grade,pubid) values(#{tid},#{sid},#{title},#{article},#{status},#{attName},#{att},#{msg}, #{grade},#{pubid})")
     public void insert(Uptask uptask);
-
+    @Select("select * from uptask where sid=#{sid}")
+    List<Uptask> findAllBySid(Integer sid);
 }

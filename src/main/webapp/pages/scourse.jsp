@@ -152,7 +152,7 @@
                                     <td>${pubtaskList.tid}</td>
                                     <td>${pubtaskList.courseid}</td>
                                     <td>${pubtaskList.cid}</td>
-                                    <td><a href="${pageContext.request.contextPath}/student/gettask"> ${pubtaskList.title} </a></td>
+                                    <td><a href="${pageContext.request.contextPath}/student/gettask?title=${pubtaskList.title}"> ${pubtaskList.title} </a></td>
 
                                 </tr>
                             </c:forEach>

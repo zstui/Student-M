@@ -21,9 +21,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Controller
 public class StudentController {
@@ -40,17 +39,6 @@ public class StudentController {
         modelAndView.setViewName("sinfo");
         return modelAndView;
     }
-
-//    @RequestMapping(value = "/student/course")
-//    public ModelAndView docourse(){
-//        ModelAndView modelAndView = new ModelAndView();
-//        //待修改
-////        List<Uptask> uptask = studentService.FindAllUptaskBycid(cid);
-//        //
-////        modelAndView.addObject(uptask);
-//        modelAndView.setViewName("scourse");
-//        return modelAndView;
-//    }
 
     @RequestMapping(value = "/student/updateinfo.do")
     @ResponseBody
@@ -74,27 +62,27 @@ public class StudentController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/student/gettask")
-    public ModelAndView gettask(@Param("title") String title, HttpServletRequest request){
-        HttpSession session = request.getSession(true);
-        Student student =(Student) session.getAttribute("student");
-        List<Pubtask> pubtask = studentService.FindPubtaskByTitle(title,student.getCid());
-        ModelAndView modelAndView =new ModelAndView();
-        modelAndView.addObject("pubtask",pubtask);
-        modelAndView.setViewName("up-task");
-        return modelAndView;
-    }
-
 //    @RequestMapping(value = "/student/gettask")
 //    public ModelAndView gettask(@Param("title") String title, HttpServletRequest request){
 //        HttpSession session = request.getSession(true);
 //        Student student =(Student) session.getAttribute("student");
-//        List<Pubtask> pubtask = studentService.FindAllPubtaskBycid(student.getCid());
+//        List<Pubtask> pubtask = studentService.FindPubtaskByTitle(title,student.getCid());
 //        ModelAndView modelAndView =new ModelAndView();
 //        modelAndView.addObject("pubtask",pubtask);
 //        modelAndView.setViewName("up-task");
 //        return modelAndView;
 //    }
+
+    @RequestMapping(value = "/student/gettask")
+    public ModelAndView gettask(@Param("title") String title, HttpServletRequest request){
+        HttpSession session = request.getSession(true);
+        Student student =(Student) session.getAttribute("student");
+        List<Pubtask> pubtask = studentService.FindAllPubtaskBycid(student.getCid());
+        ModelAndView modelAndView =new ModelAndView();
+        modelAndView.addObject("pubtask",pubtask);
+        modelAndView.setViewName("up-task");
+        return modelAndView;
+    }
 
     @RequestMapping(value = "/studnet/uptask")
     public ModelAndView uptask(){
@@ -108,23 +96,17 @@ public class StudentController {
 
     @RequestMapping(value = "/student/uptaskfile.do")
     @ResponseBody
-    public Map<String,String> uptask(MultipartFile file,HttpServletRequest request) throws IOException {
-        Map<String,String> ret = new HashMap<String,String>();
-        if (file.getSize() > 1024*1024*10){
-            ret.put("type","error");
-            ret.put("msg","文件大小不能超过10M");
-            return ret;
-        }
-        String realPath = request.getSession().getServletContext().getRealPath("uptask/");
-        String filename = file.getOriginalFilename();
-        String name= filename.substring(filename.lastIndexOf("."));
-        File file1 = new File(realPath,name);
+    public String uptask(MultipartFile file,HttpServletRequest request,HttpServletResponse response) throws IOException {
+        String realPath = request.getSession().getServletContext().getRealPath("/uptask");
+        String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        File file1 = new File(realPath,date);
         if (!file1.exists()){
-            file1.mkdir();
+            file1.mkdirs();
         }
-        file.transferTo(file1);
-        ret.put("type","success");
-        ret.put("filepath","uptask/");
-        return ret;
+        String filename= file.getOriginalFilename();
+        filename = UUID.randomUUID().toString() + filename.substring(filename.lastIndexOf("."));
+        file.transferTo(new File(file1,filename));
+        response.getWriter().write("<script>alert('上传成功!');window.location='../pages/smain.jsp'; </script>");
+        return null;
     }
 }

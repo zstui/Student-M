@@ -118,18 +118,19 @@
                     <textarea name="article" cols="100" rows="10" style="resize:none">${pubtasklist.article}</textarea></div>
 
                     <form action="/student/uptaskfile.do" method="post" enctype="multipart/form-data" name="file">
-                        <input type="file" name="attname" multiple="multiple"/>
+                        <input type="file" name="file" multiple="multiple"/>
                         <input id="attname" type="hidden" name="attname">
+                        <input type="submit" value="保存">
                     </form>
                 </c:forEach>
 
 
                 <!--订单信息/--> <!--工具栏-->
-                <div class="box-tools text-center">
-                    <button type="submit" class="btn bg-maroon">保存</button>
-                    <button type="button" class="btn bg-default"
-                            onclick="history.back(-1);">返回</button>
-                </div>
+<%--                <div class="box-tools text-center">--%>
+<%--                    <button type="submit" class="btn bg-maroon">保存</button>--%>
+<%--                    <button type="button" class="btn bg-default"--%>
+<%--                            onclick="history.back(-1);">返回</button>--%>
+<%--                </div>--%>
 
                 <!--工具栏/--> </section>
             <!-- 正文区域 /-->

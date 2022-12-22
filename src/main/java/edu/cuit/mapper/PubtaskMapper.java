@@ -2,7 +2,6 @@ package edu.cuit.mapper;
 
 import edu.cuit.domain.Pubtask;
 import edu.cuit.domain.Student;
-import edu.cuit.domain.Teacher;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
@@ -37,6 +36,6 @@ public interface PubtaskMapper {
     public void delete(Integer id);
     @Insert("insert into pubtask(tid,courseid,cid,title,article) values(#{tid},#{courseid},#{cid},#{title},#{article})")
     public void insert(Pubtask pubtask);
-    @Select("select * from pubtask where title=#{title}" )
-    public List<Pubtask> FindByTitle(String title);
+    @Select("select * from pubtask where title=#{title} and cid=#{cid}" )
+    public List<Pubtask> FindByTitleAndCid(String title,Integer cid);
 }

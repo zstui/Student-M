@@ -27,5 +27,5 @@ public interface StudentService {
 
     public List<Pubtask> FindAllPubtaskBycid(Integer Cid);
 
-    public List<Pubtask> FindPubtaskByTitle(String title);
+    public List<Pubtask> FindPubtaskByTitle(String title,Integer cid);
 }

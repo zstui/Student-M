@@ -1,6 +1,9 @@
 package edu.cuit.domain;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import java.sql.Date;
+import java.util.List;
 
 public class Uptask {
     private int aid;
@@ -15,6 +18,9 @@ public class Uptask {
     private String msg;
     private String grade;
     private int pubid;
+    private List<MultipartFile> files;
+    private String fileNameStr;
+    private List<String> path;
 
     public int getPubid() {
         return pubid;
@@ -112,6 +118,29 @@ public class Uptask {
         this.grade = grade;
     }
 
+    public List<MultipartFile> getFiles() {
+        return files;
+    }
+
+    public void setFiles(List<MultipartFile> files) {
+        this.files = files;
+    }
+
+    public String getFileNameStr() {
+        return fileNameStr;
+    }
+
+    public void setFileNameStr(String fileNameStr) {
+        this.fileNameStr = fileNameStr;
+    }
+
+    public List<String> getPath() {
+        return path;
+    }
+
+    public void setPath(List<String> path) {
+        this.path = path;
+    }
 
     @Override
     public String toString() {

@@ -114,6 +114,8 @@ private String email;
         this.pic = pic;
     }
 
+
+
     @Override
     public String toString() {
         return "Teacher{" +
@@ -129,5 +131,22 @@ private String email;
                 ", pwd='" + pwd + '\'' +
                 ", pic='" + pic + '\'' +
                 '}';
+    }
+
+
+    public Teacher() {
+    }
+
+    public Teacher(Integer tid, String tname, String tnum, String tsex, Integer tage, String tstatus, String phone, String address, String email, String pwd) {
+        this.tid = tid;
+        this.tname = tname;
+        this.tnum = tnum;
+        this.tsex = tsex;
+        this.tage = tage;
+        this.tstatus = tstatus;
+        this.phone = phone;
+        this.address = address;
+        this.email = email;
+        this.pwd = pwd;
     }
 }

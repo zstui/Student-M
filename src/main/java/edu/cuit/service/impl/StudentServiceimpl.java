@@ -70,4 +70,18 @@ public class StudentServiceimpl implements StudentService {
         return pubtaskMapper.FindByTitleAndCid(title,cid);
     }
 
+    @Override
+    public List<Student> findAll(){
+        return  studentMapper.findAll();
+    }
+
+    @Override
+    public void insertStudent(Student student){
+        studentMapper.save(student);
+    }
+
+    @Override
+    public void deleteBysnum(String snum){
+        studentMapper.deleteBySnum(snum);
+    }
 }

@@ -152,6 +152,21 @@ public class Student {
         this.pic=pic;
     }
 
+    public Student(Integer sid, String sname, String snum, String ssex, Integer sage, Integer cid, String sstatus, Integer phone, String address, String email, String entime, String pwd) {
+        this.sid = sid;
+        this.sname = sname;
+        this.snum = snum;
+        this.ssex = ssex;
+        this.sage = sage;
+        this.cid = cid;
+        this.sstatus = sstatus;
+        this.phone = phone;
+        this.address = address;
+        this.email = email;
+        this.entime = entime;
+        this.pwd = pwd;
+    }
+
     @Override
     public String toString() {
         return "Student{" +

@@ -31,4 +31,10 @@ public interface TeacherService {
     public Integer updateGrade(Integer grade,Integer aid);
 
     public Uptask findUptask(Integer aid);
+
+    public List<Teacher> findAll();
+
+    public void insertTeacher(Teacher teacher);
+
+    public void deleteByTnum(String tnum);
 }

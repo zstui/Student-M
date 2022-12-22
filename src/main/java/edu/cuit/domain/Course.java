@@ -53,6 +53,12 @@ public class Course {
         this.coursetask = coursetask;
     }
 
+    public Course(Integer courseid, String coursename, String tname) {
+        this.courseid = courseid;
+        this.coursename = coursename;
+        this.tname = tname;
+    }
+
     @Override
     public String toString() {
         return "Course{" +

@@ -10,6 +10,7 @@ import edu.cuit.service.impl.StudentServiceimpl;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -33,12 +34,15 @@ public class StudentController {
     private TeacherService teacherService;
 
 
+//    跳转到学生个人信息界面
     @RequestMapping(value = "/student/info")
     public ModelAndView showpersonal(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("sinfo");
         return modelAndView;
     }
+
+//    更新个人信息
 
     @RequestMapping(value = "/student/updateinfo.do")
     @ResponseBody
@@ -51,6 +55,7 @@ public class StudentController {
         return null;
     }
 
+//    根据班级id查询pubtask并跳转到课程中心
     @RequestMapping(value = "/student/course")
     public ModelAndView stask(HttpServletRequest request){
         HttpSession session = request.getSession(true);
@@ -62,38 +67,19 @@ public class StudentController {
         return modelAndView;
     }
 
-//    @RequestMapping(value = "/student/gettask")
-//    public ModelAndView gettask(@Param("title") String title, HttpServletRequest request){
-//        HttpSession session = request.getSession(true);
-//        Student student =(Student) session.getAttribute("student");
-//        List<Pubtask> pubtask = studentService.FindPubtaskByTitle(title,student.getCid());
-//        ModelAndView modelAndView =new ModelAndView();
-//        modelAndView.addObject("pubtask",pubtask);
-//        modelAndView.setViewName("up-task");
-//        return modelAndView;
-//    }
-
+//    获取pubtask
     @RequestMapping(value = "/student/gettask")
-    public ModelAndView gettask(@Param("title") String title, HttpServletRequest request){
+    public ModelAndView gettask(@PathVariable("title") String title, HttpServletRequest request){
         HttpSession session = request.getSession(true);
         Student student =(Student) session.getAttribute("student");
-        List<Pubtask> pubtask = studentService.FindAllPubtaskBycid(student.getCid());
+        List<Pubtask> pubtask = studentService.FindPubtaskByTitle(title,student.getCid());
         ModelAndView modelAndView =new ModelAndView();
         modelAndView.addObject("pubtask",pubtask);
         modelAndView.setViewName("up-task");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/studnet/uptask")
-    public ModelAndView uptask(){
-        ModelAndView modelAndView = new ModelAndView();
-
-
-
-
-        return modelAndView;
-    }
-
+//    传输文件
     @RequestMapping(value = "/student/uptaskfile.do")
     @ResponseBody
     public String uptask(MultipartFile file,HttpServletRequest request,HttpServletResponse response) throws IOException {
@@ -106,7 +92,7 @@ public class StudentController {
         String filename= file.getOriginalFilename();
         filename = UUID.randomUUID().toString() + filename.substring(filename.lastIndexOf("."));
         file.transferTo(new File(file1,filename));
-        response.getWriter().write("<script>alert('上传成功!');window.location='../pages/smain.jsp'; </script>");
-        return null;
+//        response.getWriter().write("<script>alert('上传成功!');window.location='../pages/smain.jsp'; </script>");
+        return "smain";
     }
 }

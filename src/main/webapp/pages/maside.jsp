@@ -25,7 +25,7 @@
 					class="fa fa-dashboard"></i> <span>首页</span></a></li>
 
 			<li class="treeview"><a href="#"> <i class="fa fa-cogs"></i>
-					<span>卷题管理</span> <span class="pull-right-container"> <i
+					<span>教务管理</span> <span class="pull-right-container"> <i
 						class="fa fa-angle-left pull-right"></i>
 				</span>
 
@@ -34,33 +34,34 @@
 				<ul class="treeview-menu">
 
 					<li><a
-						href="${pageContext.request.contextPath}/course/list"> <i
-							class="fa fa-circle-o"></i> 题单列表
+						href="${pageContext.request.contextPath}/manager/m-manager"> <i
+							class="fa fa-circle-o"></i> 管理员管理
 					</a></li>
 					<li><a
-						href="${pageContext.request.contextPath}/role/list"> <i
-							class="fa fa-circle-o"></i> 试卷管理
+						href="${pageContext.request.contextPath}/manager/m-teacher"> <i
+							class="fa fa-circle-o"></i> 教师管理
 					</a></li>
 					<li><a
-						href="${pageContext.request.contextPath}/pages/syslog-list.jsp"> <i
-							class="fa fa-circle-o"></i> 访问日志
+						href="${pageContext.request.contextPath}/manager/m-student"> <i
+							class="fa fa-circle-o"></i> 学生管理
+					</a></li>
+					<li><a
+							href="${pageContext.request.contextPath}/manager/m-course"> <i
+							class="fa fa-circle-o"></i> 课程管理
 					</a></li>
 				</ul></li>
 			<li class="treeview"><a href="#"> <i class="fa fa-cube"></i>
-					<span>基础数据</span> <span class="pull-right-container"> <i
+					<span>个人</span> <span class="pull-right-container"> <i
 						class="fa fa-angle-left pull-right"></i>
 				</span>
 			</a>
 				<ul class="treeview-menu">
 
 					<li><a
-						href="#">
-							<i class="fa fa-circle-o"></i> 产品管理
+							href="${pageContext.request.contextPath}/manager/info">
+							<i class="fa fa-circle-o"></i> 个人信息
 					</a></li>
-					<li><a
-						href="#">
-							<i class="fa fa-circle-o"></i> 订单管理
-					</a></li>
+
 
 				</ul></li>
 

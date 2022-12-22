@@ -20,7 +20,7 @@ public interface StudentMapper {
     @Select("select * from student  where snum=#{snum}")
     public Student findBySnum(String snum);
 
-    @Insert("insert into student values(#{Id},#{sname},#{snum},#{ssex},#{sage},#{cid},#{sstatus},#{phone},#{address},#{email},#{pwd},#{entime},#{pic})")
+    @Insert("insert into student values(#{sid},#{sname},#{snum},#{ssex},#{sage},#{cid},#{sstatus},#{phone},#{address},#{email},#{pwd},#{entime},#{pic})")
     public void save(Student student);
     @Delete("delete from student where snum=#{snum}")
     public void deleteBySnum(String snum);
@@ -29,5 +29,6 @@ public interface StudentMapper {
     @Update("update student set sname=#{snum},ssex=#{ssex}," +
             "sage=#{sage},cid=#{cid},sstatus=#{sstatus},phone=#{phone},address=#{address},email=#{email},pwd=#{pwd},pic=#{pic} where sid=#{sid}")
     public  void update(Student student);
+
 
 }

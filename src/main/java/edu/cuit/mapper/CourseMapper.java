@@ -18,8 +18,7 @@ public interface CourseMapper {
     public void UpdateCourse(Course course);
 
     @Delete("delete from course where courseid=#{courseid}")
-    public void DeleteCourse(Course course);
-
+    public void DeleteByCourseid(Integer courseid);
 
 
 

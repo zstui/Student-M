@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" deferredSyntaxAllowedAsLiteral="true"%>
+         pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -66,11 +66,11 @@
 <div class="wrapper">
 
     <!-- 页面头部 -->
-    <jsp:include page="sheader.jsp"></jsp:include>
+    <jsp:include page="mheader.jsp"></jsp:include>
     <!-- 页面头部 /-->
 
     <!-- 导航侧栏 -->
-    <jsp:include page="saside.jsp"></jsp:include>
+    <jsp:include page="maside.jsp"></jsp:include>
     <!-- 导航侧栏 /-->
 
     <!-- 内容区域 -->
@@ -79,15 +79,15 @@
         <!-- 内容头部 -->
         <section class="content-header">
             <h1>
-                学生中心 <small>课程中心</small>
+                教务管理 <small>教师管理</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="${pageContext.request.contextPath}/smain.jsp"><i
+                <li><a href="${pageContext.request.contextPath}/mmain.jsp"><i
                         class="fa fa-dashboard"></i> 首页</a></li>
                 <li><a
-                        href="${pageContext.request.contextPath}">学生中心</a></li>
+                        href="${pageContext.request.contextPath}">教务管理</a></li>
 
-                <li class="active">课程中心</li>
+                <li class="active">教师管理</li>
             </ol>
         </section>
         <!-- 内容头部 /-->
@@ -108,13 +108,12 @@
                         <div class="pull-left">
                             <div class="form-group form-inline">
                                 <div class="btn-group">
-<%--                                    <button type="button" class="btn btn-default" title="新建" onclick="location.href='${pageContext.request.contextPath}/pages/task-add.jsp'">--%>
-<%--                                        <i class="fa fa-file-o"></i> 新建--%>
-<%--                                    </button>--%>
+                                    <button type="button" class="btn btn-default" title="新建" onclick="location.href='${pageContext.request.contextPath}/pages/add-teacher.jsp'">
+                                        <i class="fa fa-file-o"></i> 新建
+                                    </button>
 
                                     <button type="button" class="btn btn-default" title="刷新">
-                                        <i class="fa fa-refresh"></i>
-                                        <a href="/student/course">刷新</a>
+                                        <i class="fa fa-refresh"></i> 刷新
                                     </button>
                                 </div>
                             </div>
@@ -136,23 +135,34 @@
                                 <th class="" style="padding-right: 0px"><input
                                         id="selall" type="checkbox" class="icheckbox_square-blue">
                                 </th>
-                                <th class="sorting_desc">老师id</th>
-                                <th class="sorting">课程id</th>
-                                <th class="sorting">班级id</th>
-                                <th class="sorting">标题</th>
+                                <th class="sorting_desc">教师ID</th>
+                                <th class="sorting">教师姓名</th>
+                                <th class="sorting">工号</th>
+                                <th class="sorting">性别</th>
+                                <th class="sorting">年龄</th>
+                                <th class="sorting">电话</th>
+                                <th class="sorting">地址</th>
 
 
 
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${pubtaskList1}" var="pubtaskList" >
+                            <%--@elvariable id="managerList" type="java.util.List"--%>
+                            <c:forEach items="${teacherList}" var="tList" >
                                 <tr>
                                     <td><input name="ids" type="checkbox"></td>
-                                    <td>${pubtaskList.tid}</td>
-                                    <td>${pubtaskList.courseid}</td>
-                                    <td>${pubtaskList.cid}</td>
-                                    <td><a href="${pageContext.request.contextPath}/student/gettask?title=${pubtaskList.title}"> ${pubtaskList.title} </a></td>
+                                    <td>${tList.tid}</td>
+                                    <td>${tList.tname}</td>
+                                    <td>${tList.tnum}</td>
+                                    <td>${tList.tsex}</td>
+                                    <td>${tList.tage}</td>
+                                    <td>${tList.phone}</td>
+                                    <td>${tList.address}</td>
+                                    <td class="text-center">
+                                        <a href="${pageContext.request.contextPath}/manager/deleteteacher.do?tnum=${tList.tnum}" class="btn bg-olive btn-xs">删除</a>
+                                    </td>
+
 
                                 </tr>
                             </c:forEach>

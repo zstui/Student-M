@@ -86,5 +86,17 @@ public class TeacherServiceImpl implements TeacherService {
         return uptaskMapper.findByaid(aid);
     }
 
+    @Override
+    public List<Teacher> findAll(){
+        return teacherMapper.findAll();
+    }
 
+    @Override
+    public void insertTeacher(Teacher teacher){
+        teacherMapper.save(teacher);
+    }
+
+    public void deleteByTnum(String tnum){
+        teacherMapper.deleteByTnum(tnum);
+    }
 }

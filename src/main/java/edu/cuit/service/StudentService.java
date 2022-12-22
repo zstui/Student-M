@@ -28,4 +28,10 @@ public interface StudentService {
     public List<Pubtask> FindAllPubtaskBycid(Integer Cid);
 
     public List<Pubtask> FindPubtaskByTitle(String title,Integer cid);
+
+    public List<Student> findAll();
+
+    public void insertStudent(Student student);
+
+    public void deleteBysnum(String snum);
 }

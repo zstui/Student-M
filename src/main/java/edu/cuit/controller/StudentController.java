@@ -69,16 +69,16 @@ public class StudentController {
     }
 
 //    获取pubtask
-    @RequestMapping(value = "/student/gettask")
-    public ModelAndView gettask(@PathVariable("title") String title, HttpServletRequest request){
-        HttpSession session = request.getSession(true);
-        Student student =(Student) session.getAttribute("student");
-        List<Pubtask> pubtask = studentService.FindPubtaskByTitle(title,student.getCid());
-        ModelAndView modelAndView =new ModelAndView();
-        modelAndView.addObject("pubtask",pubtask);
-        modelAndView.setViewName("up-task");
-        return modelAndView;
-    }
+        @RequestMapping(value = "/student/gettask")
+        public ModelAndView gettask(@RequestParam("title") String title, HttpServletRequest request){
+            HttpSession session = request.getSession(true);
+            Student student =(Student) session.getAttribute("student");
+            Pubtask pubtask = studentService.FindPubtaskByTitle(title,student.getCid());
+            ModelAndView modelAndView =new ModelAndView();
+            modelAndView.addObject("pubtask",pubtask);
+            modelAndView.setViewName("up-task");
+            return modelAndView;
+        }
 
     @RequestMapping(value = "/student/grade")
     public ModelAndView gradelist(HttpServletRequest request){

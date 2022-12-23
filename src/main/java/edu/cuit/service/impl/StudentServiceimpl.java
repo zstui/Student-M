@@ -74,7 +74,7 @@ public class StudentServiceimpl implements StudentService {
     }
 
     @Override
-    public List<Pubtask> FindPubtaskByTitle(String title,Integer cid){
+    public Pubtask FindPubtaskByTitle(String title,Integer cid){
         return pubtaskMapper.FindByTitleAndCid(title,cid);
     }
 

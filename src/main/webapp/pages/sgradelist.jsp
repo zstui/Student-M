@@ -108,13 +108,13 @@
                         <div class="pull-left">
                             <div class="form-group form-inline">
                                 <div class="btn-group">
-                                    <%--                                    <button type="button" class="btn btn-default" title="新建" onclick="location.href='${pageContext.request.contextPath}/pages/task-add.jsp'">--%>
-                                    <%--                                        <i class="fa fa-file-o"></i> 新建--%>
-                                    <%--                                    </button>--%>
+<%--                                    <button type="button" class="btn btn-default" title="新建" onclick="location.href='${pageContext.request.contextPath}/pages/task-add.jsp'">--%>
+<%--                                        <i class="fa fa-file-o"></i> 新建--%>
+<%--                                    </button>--%>
 
                                     <button type="button" class="btn btn-default" title="刷新">
                                         <i class="fa fa-refresh"></i>
-                                        <a href="/student/course">刷新</a>
+                                        <a href="#">刷新</a>
                                     </button>
                                 </div>
                             </div>
@@ -136,24 +136,28 @@
                                 <th class="" style="padding-right: 0px"><input
                                         id="selall" type="checkbox" class="icheckbox_square-blue">
                                 </th>
-                                <th class="sorting_desc">老师id</th>
-                                <th class="sorting">课程id</th>
-                                <th class="sorting">班级id</th>
-                                <th class="sorting">标题</th>
+                                <th class="sorting_desc">标题</th>
+                                <th class="sorting">审阅状态</th>
+                                <th class="sorting">回复消息</th>
+                                <th class="sorting">作业分数</th>
 
 
 
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${pubtaskList1}" var="pubtaskList" >
+                            <c:forEach items="${uptasklist}" var="uptask" >
                                 <tr>
                                     <td><input name="ids" type="checkbox"></td>
-                                    <td>${pubtaskList.tid}</td>
-                                    <td>${pubtaskList.courseid}</td>
-                                    <td>${pubtaskList.cid}</td>
-                                    <td><a href="${pageContext.request.contextPath}/student/gettask?title=${pubtaskList.title}"> ${pubtaskList.title} </a></td>
+                                    <td>${uptask.title}</td>
+                                    <td>${uptask.status}</td>
+                                    <td>${uptask.msg}</td>
+                                    <td>${uptask.grade}</td>
+<%--                                    <td><a href="${pageContext.request.contextPath}/teacher/uptasklist?id=${pubtask.id}"> ${pubtask.id} </a></td>--%>
 
+<%--                                    <td class="text-center">--%>
+<%--                                        <a href="${pageContext.request.contextPath}/student/findtask?title=#{pubtaskList.title}" class="btn bg-olive btn-xs">查看</a>--%>
+<%--                                    </td>--%>
                                 </tr>
                             </c:forEach>
                             </tbody>

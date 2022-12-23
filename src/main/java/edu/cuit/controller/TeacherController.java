@@ -15,12 +15,21 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
 public class TeacherController {
     @Autowired
     private TeacherService teacherService;
+
+    @RequestMapping("/teacher/download")
+    public String downloadFile(@RequestParam("aid")Integer aid,HttpServletRequest request,HttpServletResponse response) throws IOException {
+
+        teacherService.downlaodFile(aid,request,response);
+        response.getWriter().write("<script>alert('downloadSuccessed!');window.history.back(); </script>");
+        return null;
+    }
 
     @RequestMapping(value = "/teacher/addtask")
     public ModelAndView toaddtask(){

@@ -38,5 +38,7 @@ public interface UptaskMapper {
     public void delete(Uptask uptask);
     @Insert("insert into uptask values(#{aid},#{sid},tid=#{tid},#{article},#{datetime},#{status},#{attName},#{att},#{msg} #{grade})")
     public void insert(Uptask uptask);
+    @Select("select * from uptask where sid=#{sid}")
+    List<Uptask> findAllBySid(Integer sid);
 
 }

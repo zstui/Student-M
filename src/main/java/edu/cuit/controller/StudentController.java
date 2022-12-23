@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -79,20 +80,51 @@ public class StudentController {
         return modelAndView;
     }
 
-//    传输文件
+    @RequestMapping(value = "/student/grade")
+    public ModelAndView gradelist(HttpServletRequest request){
+        ModelAndView modelAndView = new ModelAndView();
+        HttpSession session = request.getSession(true);
+        Student student = (Student) session.getAttribute("student");
+        List<Uptask> uptaskList=studentService.finduptaskBySid(student.getSid());
+        modelAndView.addObject("uptasklist",uptaskList);
+        modelAndView.setViewName("sgradelist");
+
+
+        return modelAndView;
+    }
     @RequestMapping(value = "/student/uptaskfile.do")
     @ResponseBody
-    public String uptask(MultipartFile file,HttpServletRequest request,HttpServletResponse response) throws IOException {
-        String realPath = request.getSession().getServletContext().getRealPath("/uptask");
-        String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-        File file1 = new File(realPath,date);
-        if (!file1.exists()){
-            file1.mkdirs();
+    public String submituptask(@RequestParam("pubid") Integer pubid,
+                               @RequestParam("title") String title,
+                               @RequestParam("article") String article,
+                               @RequestParam(value = "file",required = false) CommonsMultipartFile file,
+                               HttpServletRequest request,
+                               HttpServletResponse response) throws IOException {
+
+        Uptask uptask=studentService.submitUptaskinfo(pubid,title,article,file,request);
+        studentService.submitUptaskAll(uptask);
+        response.getWriter().write("<script>alert('submit it already!');window.location='course'; </script>");
+        return null;
+    }
+    @RequestMapping(value = "/student/uptaskfile1.do")
+    @ResponseBody
+    public Map<String,String> uptask(MultipartFile file,HttpServletRequest request) throws IOException {
+        Map<String,String> ret = new HashMap<String,String>();
+        if (file.getSize() > 1024*1024*10){
+            ret.put("type","error");
+            ret.put("msg","文件大小不能超过10M");
+            return ret;
         }
-        String filename= file.getOriginalFilename();
-        filename = UUID.randomUUID().toString() + filename.substring(filename.lastIndexOf("."));
-        file.transferTo(new File(file1,filename));
-//        response.getWriter().write("<script>alert('上传成功!');window.location='../pages/smain.jsp'; </script>");
-        return "smain";
+        String realPath = request.getSession().getServletContext().getRealPath("uptask/");
+        String filename = file.getOriginalFilename();
+        String name= filename.substring(filename.lastIndexOf("."));
+        File file1 = new File(realPath,name);
+        if (!file1.exists()){
+            file1.mkdir();
+        }
+        file.transferTo(file1);
+        ret.put("type","success");
+        ret.put("filepath","uptask/");
+        return ret;
     }
 }

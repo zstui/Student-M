@@ -18,7 +18,7 @@ public interface ManagerMapper {
     public void save(Manager manager);
     @Delete("delete from manager where musername=#{musername}")
     public void deleteByMusername(String musername);
-    @Update("update teacher set mid=#{mid},musername=#{musername},pwd=#{pwd}," +
+    @Update("update manager set mid=#{mid},musername=#{musername},pwd=#{pwd}," +
             "mname=#{mname}")
     public  void update(Manager manager);
 }

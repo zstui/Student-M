@@ -22,13 +22,14 @@ public interface TeacherMapper {
     public Teacher findBytnum(String tnum);
     @Select("select * from teacher")
     public List<Teacher> findAll();
-    @Insert("insert into teacher values(#{Id},#{tname},#{tnum},#{tsex},#{tage},#{tstatus},#{phone},#{address},#{email},#{pwd},#{entime},#{pic})")
+    @Insert("insert into teacher values(#{tid},#{tname},#{tnum},#{tsex},#{tage},#{tstatus},#{phone},#{address},#{email},#{pwd},#{pic})")
     public void save(Teacher teacher);
     @Delete("delete from teacher where tnum=#{tnum}")
     public void deleteBySnum(String snum);
     @Update("update teacher set tname=#{tnum},tsex=#{tsex}," +
             "tage=#{tage},tstatus=#{tstatus},phone=#{phone},address=#{address},email=#{email},pwd=#{pwd},pic=#{pic}")
     public  void update(Teacher teacher);
-
+    @Delete("delete from teacher where tnum=#{tnum}")
+    public void deleteByTnum(String tnum);
 
 }
